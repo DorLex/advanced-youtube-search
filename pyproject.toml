@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "advanced-youtube-search"
+version = "0.1.0"
+description = ""
+authors = ["DorLex <dorozhinskiysanya@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-api-python-client = "^2.131.0"
+fastapi = "^0.111.0"
+pydantic-settings = "^2.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
