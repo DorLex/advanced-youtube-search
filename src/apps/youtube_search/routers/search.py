@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends
-from googleapiclient.http import HttpRequest
 
-from src.apps.youtube_search.dependencies import get_youtube_search
+from src.apps.youtube_search.dependencies import get_youtube_search, CommonQueryParams
+from src.apps.youtube_search.schemas import ResultData
+from src.apps.youtube_search.services.search import SearchService
 
 router = APIRouter(
     prefix='/search',
@@ -9,22 +10,10 @@ router = APIRouter(
 )
 
 
-@router.get('/video/')
-def video_search(search=Depends(get_youtube_search)):
-    request: HttpRequest = search.list(
-        part='snippet',
-        q='fastapi',
-        type='video',
-        maxResults=1,
-        regionCode='KZ',
-        relevanceLanguage='en'
-    )
-
-    response: dict = request.execute()
-
-    return response
-
-
-@router.get('/playlist/')
-def playlist_search():
-    return {'msg': 'playlist_search'}
+@router.get('/', response_model=list[ResultData])
+def youtube_search(
+        query_params: CommonQueryParams = Depends(CommonQueryParams),
+        search=Depends(get_youtube_search)
+):
+    search_results: list[ResultData] = SearchService(search).find(query_params)
+    return search_results
