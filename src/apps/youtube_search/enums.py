@@ -14,5 +14,3 @@ class ContentTypesEnum(str, Enum):
 class UrlTemplatesEnum(str, Enum):
     video = 'https://www.youtube.com/watch?v='
     playlist = 'https://www.youtube.com/playlist?list='
-    
-    youtube = 'https://www.youtube.com/'
