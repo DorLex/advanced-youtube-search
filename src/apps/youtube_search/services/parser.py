@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src.apps.youtube_search.enums import ContentTypesEnum, UrlTemplatesEnum
 
 
@@ -21,6 +23,12 @@ class SearchItemParser:
     @property
     def title(self) -> str:
         return self.item['snippet']['title']
+
+    @property
+    def published_at(self) -> str:
+        published_at: str = self.item['snippet']['publishedAt']
+        published_at: datetime = datetime.strptime(published_at, '%Y-%m-%dT%H:%M:%SZ')
+        return published_at.strftime('%d %B %Y')
 
     @property
     def description(self) -> str:

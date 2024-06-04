@@ -23,6 +23,7 @@ class SearchService:
                 ResultData(
                     title=parser.title,
                     content_type=parser.content_type,
+                    published_at=parser.published_at,
                     url=parser.url,
                     description=parser.description
                 )

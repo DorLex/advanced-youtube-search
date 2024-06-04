@@ -1,4 +1,8 @@
+import locale
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+locale.setlocale(locale.LC_TIME, '')
 
 
 class Settings(BaseSettings):
