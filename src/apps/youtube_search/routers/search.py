@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from src.apps.youtube_search.dependencies import get_youtube_search, CommonQueryParams
+from src.apps.youtube_search.dependencies import get_youtube_search
+from src.apps.youtube_search.query_params import CommonQueryParams
 from src.apps.youtube_search.schemas import ResultData
 from src.apps.youtube_search.services.search import SearchService
 

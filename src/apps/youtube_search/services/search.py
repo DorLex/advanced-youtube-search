@@ -1,6 +1,6 @@
 from googleapiclient.http import HttpRequest
 
-from src.apps.youtube_search.dependencies import CommonQueryParams, fake_response
+from src.apps.youtube_search.query_params import CommonQueryParams
 from src.apps.youtube_search.schemas import ResultData
 from src.apps.youtube_search.services.parser import SearchItemParser
 
@@ -11,9 +11,7 @@ class SearchService:
         self._Parser = SearchItemParser
 
     def find(self, query_params: CommonQueryParams) -> list[ResultData]:
-        # response = self._get(query_params)
-
-        response: dict = fake_response
+        response = self._get(query_params)
 
         search_results = []
         for item in response['items']:
@@ -33,9 +31,11 @@ class SearchService:
         return search_results
 
     def _get(self, query_params: CommonQueryParams) -> dict:
+        search_query = self._generate_search_query(query_params)
+
         request: HttpRequest = self._search.list(
             part='snippet',
-            q=query_params.q,
+            q=search_query,
             type=query_params.content_type.value,
             maxResults=query_params.max_results,
             regionCode='KZ',
@@ -43,3 +43,13 @@ class SearchService:
         )
 
         return request.execute()
+
+    def _generate_search_query(self, query_params: CommonQueryParams) -> str:
+        search_query: str = query_params.q
+
+        if query_params.after:
+            search_query += f' after:{query_params.after}'
+        if query_params.before:
+            search_query += f' before:{query_params.before}'
+
+        return search_query
