@@ -25,6 +25,10 @@ class SearchItemParser:
         return self.item['snippet']['title']
 
     @property
+    def channel_title(self) -> str:
+        return self.item['snippet']['channelTitle']
+
+    @property
     def published_at(self) -> str:
         published_at: str = self.item['snippet']['publishedAt']
         published_at: datetime = datetime.strptime(published_at, '%Y-%m-%dT%H:%M:%SZ')
