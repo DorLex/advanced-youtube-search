@@ -7,9 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-google-api-python-client = "^2.131.0"
-fastapi = "^0.111.0"
-pydantic-settings = "^2.2.1"
+fastapi = "^0.115.0"
+uvicorn = "^0.31.0"
+pydantic-settings = "^2.5.2"
+google-api-python-client = "^2.147.0"
 
 
 [build-system]
