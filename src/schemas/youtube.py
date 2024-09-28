@@ -2,7 +2,7 @@ from datetime import date
 
 from pydantic import BaseModel, HttpUrl, Field
 
-from src.apps.youtube_search.enums import ContentTypesEnum, RelevanceLanguagesEnum
+from src.enums.youtube import ContentTypesEnum, RelevanceLanguagesEnum
 
 
 class SearchQueryParamsSchema(BaseModel):

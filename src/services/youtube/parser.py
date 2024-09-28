@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.apps.youtube_search.enums import ContentTypesEnum, UrlTemplatesEnum
+from src.enums.youtube import ContentTypesEnum, UrlTemplatesEnum
 
 
 class SearchItemParser:

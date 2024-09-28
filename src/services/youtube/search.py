@@ -1,7 +1,7 @@
 from googleapiclient.http import HttpRequest
 
-from src.apps.youtube_search.services.parser import SearchItemParser
 from src.schemas.youtube import ResultDataSchema, SearchQueryParamsSchema
+from src.services.youtube.parser import SearchItemParser
 
 
 class SearchService:
