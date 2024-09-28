@@ -2,7 +2,7 @@ import locale
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-locale.setlocale(locale.LC_TIME, '')
+locale.setlocale(locale.LC_TIME, '')  # для отображения месяцев на русском
 
 
 class Settings(BaseSettings):
